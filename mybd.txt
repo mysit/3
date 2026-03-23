@@ -1,0 +1,55 @@
+CREATE TABLE application (
+  id int unsigned NOT NULL AUTO_INCREMENT,
+  name varchar(128) NOT NULL DEFAULT '',
+  email varchar(128) NOT NULL DEFAULT '',
+  number int(15) NOT NULL DEFAULT 0,
+  bday date NOT NULL DEFAULT(current_date),
+  sex varchar(128) NOT NULL DEFAULT '',
+  bio varchar(128) NOT NULL DEFAULT '',
+  PRIMARY KEY (id)
+);
+
+
+CREATE TABLE favor (
+  email varchar(128) NOT NULL DEFAULT '',
+  
+);
+
+CREATE TABLE programming_languages (
+    id CHAR(36) NOT NULL,
+    name VARCHAR(50) NOT NULL UNIQUE,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO languages (id, name) VALUES 
+(UUID(), 'Pascal'),
+(UUID(), 'C'),
+(UUID(), 'C++'),
+(UUID(), 'JavaScript'),
+(UUID(), 'PHP'),
+(UUID(), 'Python'),
+(UUID(), 'Java'),
+(UUID(), 'Haskell'),
+(UUID(), 'Clojure'),
+(UUID(), 'Prolog'),
+(UUID(), 'SML'),
+(UUID(), 'Scala'),
+(UUID(), 'Go');
+
+CREATE TABLE application_languages (
+    application_id INT UNSIGNED NOT NULL,
+    language_id CHAR(36) NOT NULL,
+    
+    
+    CONSTRAINT fk_application 
+        FOREIGN KEY (application_id) 
+        REFERENCES application(id) 
+        ON DELETE CASCADE,
+        
+    CONSTRAINT fk_language 
+        FOREIGN KEY (language_id) 
+        REFERENCES languages(id) 
+        ON DELETE CASCADE,
+        
+    PRIMARY KEY (application_id, language_id)
+);
