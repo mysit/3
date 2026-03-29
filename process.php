@@ -35,7 +35,7 @@ if (empty($name) || empty($email) || empty($selected_languages)) {
 
 try {
     // 4. Вставка в основную таблицу (application)
-    $stmt = $db->prepare("INSERT INTO application (name, email, phone, bday, sex, bio) 
+    $stmt = $db->prepare("INSERT INTO application (name, email, number, bday, sex, bio) 
                           VALUES (:name, :email, :phone, :bday, :sex, :bio)");
     
     $stmt->execute([
